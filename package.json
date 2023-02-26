@@ -1,0 +1,33 @@
+{
+  "name": "odin-restaraunt-page",
+  "version": "1.0.0",
+  "description": "Restaraunt webpage for TOP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanertel1/odin-restaraunt-page.git"
+  },
+  "author": "Ryan Ertel",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "webpack": "--mode development",
+    "build-prod": "webpack --mode prodution"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanertel1/odin-restaraunt-page/issues"
+  },
+  "homepage": "https://github.com/ryanertel1/odin-restaraunt-page#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
