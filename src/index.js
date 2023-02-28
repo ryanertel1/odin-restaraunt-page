@@ -25,46 +25,10 @@ function recipeFactory(name, description, imgSrc, calories, fat, carbs, protein)
   };
 }
 
-function createRipple(event) {
-  const button = event.currentTarget;
-  const circle = document.createElement('span');
-  const diameter = Math.max(button.clientWidth, button.clientHeight);
-  circle.style.width = `${diameter}px`;
-  circle.style.height = circle.style.width;
-  circle.classList.add('ripple');
-
-  const ripple = button.getElementsByClassName('ripple')[0];
-
-  if (ripple) {
-    ripple.remove();
-  }
-
-  button.appendChild(circle);
-}
-
 function clearContent() {
   while (content.firstChild && content.lastChild.className !== 'background-image') {
     content.removeChild(content.lastChild);
   }
-}
-function generateHome() {
-  const homeBanner = document.createElement('div');
-  homeBanner.classList.add('home-banner');
-  content.appendChild(homeBanner);
-  const bannerText = document.createElement('div');
-  bannerText.classList.add('banner-text');
-  homeBanner.appendChild(bannerText);
-  const bannerH1 = document.createElement('h1');
-  bannerH1.innerHTML = 'The Nomad';
-  bannerText.appendChild(bannerH1);
-  const bannerH3 = document.createElement('h3');
-  bannerH3.innerHTML = 'pizza kitchen';
-  bannerText.appendChild(bannerH3);
-
-  const bannerButton = document.createElement('button');
-  bannerButton.textContent = 'Menu';
-  bannerButton.addEventListener('click', createRipple);
-  homeBanner.appendChild(bannerButton);
 }
 function generateMenu() {
   for (const recipe of recipeArray) {
@@ -131,11 +95,56 @@ function generateMenu() {
     }
   }
 }
+function generateHome() {
+  const homeBanner = document.createElement('div');
+  homeBanner.classList.add('home-banner');
+  content.appendChild(homeBanner);
+  const bannerText = document.createElement('div');
+  bannerText.classList.add('banner-text');
+  homeBanner.appendChild(bannerText);
+  const bannerH1 = document.createElement('h1');
+  bannerH1.innerHTML = 'The Nomad';
+  bannerText.appendChild(bannerH1);
+  const bannerH3 = document.createElement('h3');
+  bannerH3.innerHTML = 'pizza kitchen';
+  bannerText.appendChild(bannerH3);
+
+  const bannerButton = document.createElement('button');
+  bannerButton.textContent = 'Menu';
+  bannerButton.addEventListener('click', () => {
+    clearContent();
+    generateMenu();
+    const headerItems = header.querySelectorAll('.header-item');
+    headerItems[1].click();
+  });
+  homeBanner.appendChild(bannerButton);
+}
 function generateAbout() {
-  const homeContent = document.createElement('text');
-  homeContent.innerHTML = 'About page';
-  homeContent.style.color = 'yellow';
-  content.appendChild(homeContent);
+  const storyContainer = document.createElement('div');
+  content.appendChild(storyContainer);
+  storyContainer.classList.add('story-container');
+  const storyH1 = document.createElement('h1');
+  storyContainer.appendChild(storyH1);
+  storyH1.innerHTML = 'Our Story';
+  const storyP = document.createElement('p');
+  storyContainer.appendChild(storyP);
+  storyP.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  const contactContainer = document.createElement('div');
+  content.appendChild(contactContainer);
+  contactContainer.classList.add('contact-container');
+  const contactH1 = document.createElement('h1');
+  contactContainer.appendChild(contactH1);
+  contactH1.innerHTML = 'Contact Us';
+  const phoneText = document.createElement('text');
+  contactContainer.appendChild(phoneText);
+  phoneText.innerHTML = 'Phone: 111-222-3344';
+  const addressText = document.createElement('text');
+  contactContainer.appendChild(addressText);
+  addressText.innerHTML = 'Address: 567 fake name lane';
+  const emailText = document.createElement('text');
+  contactContainer.appendChild(emailText);
+  emailText.innerHTML = 'E-Mail: fakeEmail3@notreal.com';
 }
 
 (() => {
